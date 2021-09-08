@@ -1,18 +1,18 @@
-package co.project.custumers;
+package co.project.customers;
 
 import co.project.main.Main;
 
 public class Customer {
 
-	private int cpf;
+	private String cpf;
 	private String name;
-	private int phone;
+	private String phone;
 	private String email;
 	
-	private int getCpf() {
+	private String getCpf() {
 		return cpf;
 	}
-	private void setCpf(int cpf) {
+	private void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	private String getName() {
@@ -21,10 +21,10 @@ public class Customer {
 	private void setName(String name) {
 		this.name = name;
 	}
-	private int getPhone() {
+	private String getPhone() {
 		return phone;
 	}
-	private void setPhone(int phone) {
+	private void setPhone(String phone) {
 		this.phone = phone;
 	}
 	private String getEmail() {
@@ -33,13 +33,17 @@ public class Customer {
 	private void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public void registerCustomers(String name, int cpf, String email, int phone) {
-		setName(name);
-		setCpf(cpf);
-		setEmail(email);
-		setPhone(phone);
+	public Customer(String name, String cpf, String email, String phone) {
+		this.cpf = cpf;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
 	}
+	
+	public boolean equalsCpf(Object anObject) {
+		return cpf.equals(anObject);
+	}
+	
 	@Override
 	public String toString() {
 		return "\nCustomer:\n" + "Name: " + getName() + "\nCPF: " + getCpf() + "\nE-mail: " + getEmail() + "\nPhone: " + getPhone() + "\n";
