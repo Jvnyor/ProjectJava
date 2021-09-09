@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import co.project.alterations.Alterations;
 import co.project.customers.Customer;
 import co.project.validations.Validations;
 
@@ -14,6 +15,8 @@ public class Main {
 		List<Customer> customersList = new ArrayList<>();
 		
 		Validations validations = new Validations();
+		
+		Alterations alterations = new Alterations();
 		
 		int i = 0;
 		while (i != 2) {
@@ -28,41 +31,19 @@ public class Main {
 						
 						System.out.println("Name: ");
 						String name = in.nextLine();
-						while (validations.checkName(name) != true) {
-							System.out.println("Insert a correct name: ");
-							name = in.nextLine();
-						}
+						validations.checkName(name);
+						
 						System.out.println("CPF: ");
 						String cpf = in.nextLine();
-						while (validations.checkCpf(cpf) != true) {
-							System.out.println("Insert a correct CPF: ");
-							cpf = in.nextLine();
-						}
-						// PROBLEMA
-						for (int iterator = 0; iterator < customersList.size(); iterator++) {
-							while (customersList.get(iterator).equalsCpf(cpf)) {
-								System.out.println("This CPF already exists, insert a new CPF.");
-								System.out.println("CPF: ");
-								cpf = in.nextLine();
-								while (validations.checkCpf(cpf) != true) {
-									System.out.println("Insert a correct CPF: ");
-									cpf = in.nextLine();
-								}
-							}
-						}
-						// PROBLEMA ^^
+						cpf = validations.checkCpf(cpf, customersList);
+
 						System.out.println("E-mail: ");
 						String email = in.nextLine();
-						while (validations.checkEmail(email) != true) {
-							System.out.println("Insert a correct E-mail: ");
-							email = in.nextLine();
-						}
+						validations.checkEmail(email);
+						
 						System.out.println("Phone: ");
 						String phone = in.nextLine();
-						while (validations.checkPhone(phone) != true) {
-							System.out.println("Insert a correct phone number: ");
-							phone = in.nextLine();
-						}
+						validations.checkPhone(phone);
 						
 						Customer customer = new Customer(name,cpf,email,phone);
 						
@@ -73,18 +54,23 @@ public class Main {
 
 				
 				break;
+				// PENDENTE \/ \/
 //			case 2:
-//				System.out.println("Enter a CPF to search a customer: ");
+//				System.out.println("Enter a CPF to alter a customer: ");
 //				Scanner value = new Scanner(System.in);
 //				String cpfValue = value.nextLine();
 //				for (int iterator = 0; iterator < customersList.size(); iterator++) {
-//					if (customersList.get(iterator).equalsCpf(cpfValue)) {
-//						System.out.println("This name already exists");
+//					if (customersList.get(iterator).equals(cpfValue)) {
+////						alterations.alterNameAndEmail(iterator, name, email, customersList);
 //					}
 //				}
-//				
+				// PENDENTE /\ /\
 			case 2:
 				System.out.println("Program finished");
+				break;
+				
+			default:
+				System.out.println("Invalid number!");
 				break;
 			}
 			
