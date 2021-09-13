@@ -19,11 +19,12 @@ public class Main {
 		Alterations alterations = new Alterations();
 		
 		int i = 0;
-		while (i != 2) {
+		while (i != 3) {
 			Scanner select = new Scanner(System.in);
 			
 			System.out.println("Type 1 to register customer." +
-								"\nType 2 to finalize program.");
+								"\nType 2 to alter customer."
+								+ "\nType 3 to finalize program.");
 			i = select.nextInt();
 			switch (i) {
 			case 1:
@@ -55,17 +56,19 @@ public class Main {
 				
 				break;
 				// PENDENTE \/ \/
-//			case 2:
-//				System.out.println("Enter a CPF to alter a customer: ");
-//				Scanner value = new Scanner(System.in);
-//				String cpfValue = value.nextLine();
-//				for (int iterator = 0; iterator < customersList.size(); iterator++) {
-//					if (customersList.get(iterator).equals(cpfValue)) {
-////						alterations.alterNameAndEmail(iterator, name, email, customersList);
-//					}
-//				}
-				// PENDENTE /\ /\
 			case 2:
+				
+				System.out.println("Enter a CPF to alter a customer: ");
+				Scanner value = new Scanner(System.in);
+				cpf = value.nextLine();
+				name = value.nextLine();
+				email = value.nextLine();
+				alterations.alterNameAndEmail(cpf, name, email, customersList);
+				
+				System.out.println(customersList);
+				break;
+				// PENDENTE /\ /\
+			case 3:
 				System.out.println("Program finished");
 				break;
 				

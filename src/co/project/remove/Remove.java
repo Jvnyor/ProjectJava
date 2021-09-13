@@ -1,9 +1,13 @@
 package co.project.remove;
 
+import co.project.customers.Customer;
+
 public class Remove {
 
-	public Remove() {
-		// TODO Auto-generated constructor stub
+	Customer customer;
+	
+	public void deleteUser() {
+		
 	}
 
 }
