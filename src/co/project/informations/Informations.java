@@ -1,9 +1,12 @@
 package co.project.informations;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import co.project.customers.Customer;
+
 public class Informations {
 
-	public Informations() {
-		// TODO Auto-generated constructor stub
-	}
+	public static List<Customer> customersList = new ArrayList<>();
 
 }

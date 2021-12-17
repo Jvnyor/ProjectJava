@@ -5,30 +5,31 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import co.project.customers.Customer;
+import co.project.informations.Informations;
+import co.project.remove.Remove;
+import co.project.searching.Searching;
 import co.project.validations.Validations;
 
 public class Alterations {
 	
-	Validations validations = new Validations();
-
-	public String alterNameAndEmail(String cpf, String name, String email, List<Customer> customers){
-
-		Customer customer = new Customer(name, cpf, email, null);
-		
-		validations.checkCpfIsCorrect(cpf);
-		
-		List<Customer> collect = customers
-		.stream()
-			.filter(
-					(Customer c) -> cpf.equals(c.getCpf())).collect(Collectors.toList());
-		if (!collect.isEmpty()) {
-			
-			return "Name: " + name + "\nE-mail: " + email;
+	Remove remove = new Remove();
 	
-		}
-		
-		return alterNameAndEmail(cpf, customer.getName(), customer.getEmail(), customers);
-		
+	Validations validations = new Validations();
+	
+	Informations informations = new Informations();
+	
+	Searching searching = new Searching();
+
+	public List<Customer> alterEmail(String cpf,String email,List<Customer> listCustomers) throws Exception{
+		Customer customerToAlter = searching.findByCpf(cpf);
+		customerToAlter.setEmail(email);
+		return listCustomers;
+	}
+	
+	public List<Customer> alterPhone(String cpf,String phone,List<Customer> listCustomers) throws Exception{
+		Customer customerToAlter = searching.findByCpf(cpf);
+		customerToAlter.setPhone(phone);
+		return listCustomers;
 	}
 
 }
